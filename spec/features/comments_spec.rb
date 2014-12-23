@@ -1,3 +1,5 @@
 require 'rails_helper'
 
-scenario 'CRUDing comments'
+feature 'CRUDing comments' do
+
+end
