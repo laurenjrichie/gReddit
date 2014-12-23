@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/signup' => 'registrations#create'
   get '/signin' => 'authentication#new'
   post '/signin' => 'authentication#create'
+  get '/signout' => 'authentication#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
