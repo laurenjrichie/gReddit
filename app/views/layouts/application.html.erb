@@ -11,12 +11,15 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to 'Sign Up', signup_path %>
-        </li>
-        <li>
-          <%= "Sign In" %>
-        </li>
+
+        <% if current_user %>
+          <li>Signed in as <%= current_user.name %></li>
+          <li><%= link_to 'Sign Out' %></li>
+        <% else %>
+          <li><%= link_to 'Sign Up', signup_path %></li>
+          <li><%= link_to "Sign In", signin_path %></li>
+        <% end %>
+
       </ul>
     </div>
   </nav>

@@ -1,0 +1,24 @@
+<div class=" col-md-8 col-md-offset-2">
+  <div class="page-header">
+    <h1>Sign in to gReddit</h1>
+  </div>
+
+  <%= form_tag signin_path, html: {class: "form"} do |f| %>
+    <% if @sign_in_error %>
+      <p><%= @sign_in_error %></p>
+    <% end %>
+
+    <div class="form-group">
+      <%= label_tag :email, nil, class: "control-label" %>
+      <%= email_field_tag :email, nil, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, nil, class: "control-label" %>
+      <%= password_field_tag :password, nil, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</div>
