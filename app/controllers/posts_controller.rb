@@ -4,11 +4,13 @@ class PostsController < ApplicationController
   end
 
   def new
+    authenticate_user
     @post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
+    authenticate_user
+    @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to post_path(@post), notice: "Post was successfully created"
     else
@@ -21,11 +23,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    authenticate_user
+    @post = current_user.posts.find_by(id: params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     @post.update(post_params)
     if @post.save
       redirect_to post_path(@post), notice: "Post was successfully updated"
@@ -35,6 +38,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authenticate_user
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path, notice: "Post was successfully deleted"
