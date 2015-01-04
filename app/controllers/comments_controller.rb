@@ -19,6 +19,19 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = @post.comments.find(params[:id])
+  end
+
+  def update
+    @comment = @post.comments.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to @post, notice: "Your comment has been updated."
+    else
+      render :new
+    end
+  end
+
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
