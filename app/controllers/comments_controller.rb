@@ -4,14 +4,14 @@ class CommentsController < ApplicationController
   end
 
   def new
-    # authenticate_user
+    authenticate_user
     @comment = @post.comments.new
   end
 
   def create
-    # authenticate_user
+    authenticate_user
     @comment = @post.comments.new(comment_params)
-    # @comment.user_id = current.user_id
+    @comment.user_id = current_user.id
     if @comment.save
       redirect_to @post, notice: "Your comment has been posted."
     else
