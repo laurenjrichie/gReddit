@@ -10,6 +10,9 @@
           <%= link_to post.title, post_path(post) %>
         </h3>
         <p>
+          posted <%= time_ago_in_words(post.created_at) %> ago - by <%= post.user.name %>
+        </p>
+        <p>
           <%= post.content %>
         </p>
       <% end %>
